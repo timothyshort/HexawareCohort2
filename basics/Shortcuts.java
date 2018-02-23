@@ -29,6 +29,13 @@ public class Shortcuts {
 	Browsers: LinkText & Formatting
 	 Chrome and IE interpret text post-CSS
 	 Firefox interprets text from inner HTML
+	 
+	Programming Fundamentals
+	 Variables - placeholders for data
+	 Functions - declared, repeatable, callable code blocks that do work based on input
+	 Arrays - ordered data by variable type (String, int) and logical category
+	 Loops - repeated same code over again based on condition (While-loop, For-loop) 
+	 Control Flow (if statements) - execute different code based on condition
 	
 	*/
 	
