@@ -22,6 +22,10 @@ public class Shortcuts {
 	  *Therefore, both CD and FD have the same method/function NAMES but DIFFERENT implementation for the specific browser
 	  *WebDriver .get() will open a new browser on Firefox or Chrome depending on where WebDriver points
 	
+	Polymorphism & Overloading
+	 Java will NOT allow same function definition (name + argument)
+	 Java WILL allow same function name with different argument
+	
 	Static vs Instance
 	 Static - we can call directly without instantiation (uses functions)
 	 Instance - we create a new, independent object with its distinct properties (uses methods)

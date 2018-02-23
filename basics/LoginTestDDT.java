@@ -57,14 +57,16 @@ public class LoginTestDDT {
 		System.out.println("TEST STARTING");
 		
 		// Define variables using arrays
+		String url = "http://sdettraining.com/trguitransactions/AccountManagement.aspx";
 		String username = "tim@testemail.com";
 		String[] password = { "2309u", "sdfsf", "sdfew", "trpass" };
+		String expectedInvalid = "Invalid password, try again!";
+		String expectedValid = "Logged in OK";
 		int numOfElements = password.length;
 		System.out.println("Number of test cases: " + numOfElements);
 		
 		// Initialize browser
-		WebDriver driver = utilities.DriverFactory.start(browserType);
-		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
+		WebDriver driver = utilities.DriverFactory.start(browserType, url);
 		
 		// Enter username
 		driver.findElement(By.id("MainContent_txtUserName")).sendKeys(username);
@@ -81,7 +83,12 @@ public class LoginTestDDT {
 			}
 			*/
 			utilities.ValueAssertions.contains(driver, By.id("MainContent_lblTransactionResult"), "Invalid");
+			
+			// Exercise: create a .equals function, and use "Invalid password, try again!" as @param
+			utilities.ValueAssertions.equals(driver, By.id("MainContent_lblTransactionResult"), expectedInvalid);
 			Thread.sleep(1000);
+			
+
 			
 		}
 		
@@ -90,6 +97,7 @@ public class LoginTestDDT {
 		driver.findElement(By.id("MainContent_btnLogin")).click();
 		Thread.sleep(1000);
 		utilities.ValueAssertions.contains(driver, By.id("conf_message"), "success");
+		utilities.ValueAssertions.equals(driver, By.id("conf_message"), expectedValid);
 		
 		// Terminate session
 		driver.quit();

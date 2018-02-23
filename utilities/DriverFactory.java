@@ -9,6 +9,12 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 // This class contains methods that return a WebDriver instance
 public class DriverFactory {
 	
+	/* private functions to return browser
+	private static WebDriver chooseChrome()
+	private static WebDriver chooseFirefox()
+	private static WebDriver chooseIE()
+	*/
+	
 	// Receives browser type and returns browser driver accordingly
 	public static WebDriver start(String browserType) {
 		WebDriver driver;
@@ -45,5 +51,10 @@ public class DriverFactory {
 	}
 	
 	// Receives a browser type and starting URL and returns browser driver accordingly starting at the given URL
+	public static WebDriver start(String browserType, String url) {
+		WebDriver driver = start(browserType);
+		driver.get(url);
+		return driver;
+	}
 
 }
