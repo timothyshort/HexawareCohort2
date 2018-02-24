@@ -9,32 +9,39 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 // This class contains methods that return a WebDriver instance
 public class DriverFactory {
 	
-	/* private functions to return browser
-	private static WebDriver chooseChrome()
-	private static WebDriver chooseFirefox()
-	private static WebDriver chooseIE()
-	*/
+	// private functions to return browser
+	private static WebDriver chooseChrome() {
+		System.out.println("Browser is CHROME");
+		System.setProperty("webdriver.chrome.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		return driver;
+	}
+	private static WebDriver chooseFirefox() {
+		System.out.println("Browser is FIREFOX");
+		System.setProperty("webdriver.gecko.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\geckodriver.exe");
+		return new FirefoxDriver();
+	}
+	private static WebDriver chooseIE() {
+		System.out.println("Browser is IE");
+		System.setProperty("webdriver.ie.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\IEDriverServer.exe");
+		WebDriver driver = new InternetExplorerDriver();
+		driver.manage().window().maximize();
+		return driver;
+	}
 	
 	// Receives browser type and returns browser driver accordingly
 	public static WebDriver start(String browserType) {
 		WebDriver driver;
 		
 		if (browserType.equalsIgnoreCase("chrome")) {
-			System.out.println("Browser is CHROME");
-			System.setProperty("webdriver.chrome.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\chromedriver.exe");
-			driver = new ChromeDriver();
-			driver.manage().window().maximize();
+			return chooseChrome();
 		}
 		else if (browserType.equalsIgnoreCase("firefox")) {
-			System.out.println("Browser is FIREFOX");
-			System.setProperty("webdriver.gecko.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\geckodriver.exe");
-			driver = new FirefoxDriver();
+			return chooseFirefox();
 		}
 		else if (browserType.toUpperCase().equals("IE")) {
-			System.out.println("Browser is IE");
-			System.setProperty("webdriver.ie.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
-			driver.manage().window().maximize();
+			return chooseIE();
 		}
 		else if (browserType.equalsIgnoreCase("headless")) {
 			System.out.println("Headless Browser: HTML UNIT");
@@ -42,9 +49,7 @@ public class DriverFactory {
 		}
 		else {
 			System.out.println("Using default browser: CHROME");
-			System.setProperty("webdriver.chrome.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\chromedriver.exe");
-			driver = new ChromeDriver();
-			driver.manage().window().maximize();
+			return chooseChrome();
 		}
 		
 		return driver;

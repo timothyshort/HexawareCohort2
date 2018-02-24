@@ -7,7 +7,7 @@ public class LoginTestDDT {
 
 	public static void main(String[] args) throws InterruptedException {
 		String browserToTest = "firefox";
-		// multiUsernameTest();
+		multiUsernameTest();
 		oneUsernameTest(browserToTest);
 	}
 	
