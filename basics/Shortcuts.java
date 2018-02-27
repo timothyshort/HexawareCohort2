@@ -41,6 +41,10 @@ public class Shortcuts {
 	 Loops - repeated same code over again based on condition (While-loop, For-loop) 
 	 Control Flow (if statements) - execute different code based on condition
 	
+	Constructors
+	 1. is a public function defined as the same name as the class
+	 2. has no return type (no void, no value)
+	 3. is implicitly called when a new object is created
 	*/
 	
 }

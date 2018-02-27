@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Freddie Mac Test Suites" parallel="false">
+  <test name="Smoke Tests">
+    <classes>
+      <class name="frameworks.TestNGIntro"/>
+      <class name="frameworks.TestNGDataDriven"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Regression Tests">
+    <classes>
+      <class name="frameworks.TestNGTests"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

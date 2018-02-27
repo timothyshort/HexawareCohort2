@@ -1,4 +1,4 @@
-package testframeworks;
+package frameworks;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -20,7 +20,7 @@ public class JUnitIntro {
 	public void loginTest() {
 		System.out.println("  Executing test on login");
 		String expectedValue = "success";
-		String actualValue = "please try again";
+		String actualValue = "success";
 		Assert.assertEquals(expectedValue, actualValue);
 	}
 	
