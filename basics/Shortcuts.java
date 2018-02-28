@@ -45,6 +45,11 @@ public class Shortcuts {
 	 1. is a public function defined as the same name as the class
 	 2. has no return type (no void, no value)
 	 3. is implicitly called when a new object is created
+	 
+	Data Structures
+	 Arrays are primitive; size is fixed; index-based
+	 Collections framework allows dynamic data handling (via series of methods)
+	 
 	*/
 	
 }
