@@ -13,7 +13,7 @@ import utilities.DriverFactory;
 import utilities.WindowHandling;
 
 public class Windows {
-	WebDriver driver;	
+	WebDriver driver;
 	
 	@Before
 	public void setup() {

@@ -50,6 +50,10 @@ public class Shortcuts {
 	 Arrays are primitive; size is fixed; index-based
 	 Collections framework allows dynamic data handling (via series of methods)
 	 
+	Logic Statements (Switch)
+	 Switch is used to test EQUIVALENCE of ONE variable
+	 Switch "falls through" - one matching case, all following cases will execute (use break; to exit)
+	 
 	*/
 	
 }
