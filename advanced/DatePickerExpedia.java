@@ -1,4 +1,4 @@
-package basics;
+package advanced;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,13 +74,14 @@ public class DatePickerExpedia {
 		}
 		
 		// Clicking "day"
-		List<WebElement> days = driver.findElements(By.className("datepicker-day-number"));
-		days.get(dateDay-1).click();
-		/*
+		// List<WebElement> days = driver.findElements(By.className("datepicker-day-number"));
+		List<WebElement> days = driver.findElements(By.xpath(departingRootXPath + departingMonthXPath + "/tbody/[contains(@class, 'datepicker-day-number')]"));
+		// days.get(dateDay-1).click();
+		
 		for (WebElement day : days) {
 			System.out.println("Day: " + day.getText());
 		}
-		*/
+		
 		
 		Thread.sleep(4000);
 	}

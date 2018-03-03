@@ -1,5 +1,7 @@
 package utilities;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -32,8 +34,6 @@ public class DriverFactory {
 	
 	// Receives browser type and returns browser driver accordingly
 	public static WebDriver start(String browserType) {
-		WebDriver driver;
-		
 		if (browserType.equalsIgnoreCase("chrome")) {
 			return chooseChrome();
 		}
@@ -45,20 +45,26 @@ public class DriverFactory {
 		}
 		else if (browserType.equalsIgnoreCase("headless")) {
 			System.out.println("Headless Browser: HTML UNIT");
-			driver = new HtmlUnitDriver();
+			return new HtmlUnitDriver();
 		}
 		else {
 			System.out.println("Using default browser: CHROME");
 			return chooseChrome();
 		}
-		
-		return driver;
 	}
 	
 	// Receives a browser type and starting URL and returns browser driver accordingly starting at the given URL
 	public static WebDriver start(String browserType, String url) {
 		WebDriver driver = start(browserType);
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.get(url);
+		return driver;
+	}
+	
+	private static WebDriver configure(WebDriver driver) {
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		return driver;
 	}
 

@@ -54,6 +54,10 @@ public class Shortcuts {
 	 Switch is used to test EQUIVALENCE of ONE variable
 	 Switch "falls through" - one matching case, all following cases will execute (use break; to exit)
 	 
+	Selenium Waits
+	 Implicitly Wait - default time that a WebDriver instance will wait for an element to appear before throwing an exception
+	 Explicitly Wait - defined specifically for a specific element with defined conditions
+	 
 	*/
 	
 }
