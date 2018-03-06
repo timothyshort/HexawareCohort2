@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import utilities.DriverFactory;
+import utilities.GlobalConfig;
 import utilities.WindowHandling;
 
 public class Windows {
@@ -17,7 +18,7 @@ public class Windows {
 	
 	@Before
 	public void setup() {
-		driver = DriverFactory.start("chrome", "http://sdettraining.com/projects/windows.html");
+		driver = DriverFactory.start("chrome", GlobalConfig.ROOTURL + "windows.html");
 	}
 	
 	@Test

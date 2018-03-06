@@ -14,19 +14,19 @@ public class DriverFactory {
 	// private functions to return browser
 	private static WebDriver chooseChrome() {
 		System.out.println("Browser is CHROME");
-		System.setProperty("webdriver.chrome.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\chromedriver.exe");
+		System.setProperty(GlobalConfig.CHROMEKEY, GlobalConfig.DRIVERDIRECTORY + GlobalConfig.CHROMEVALUE);
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		return driver;
 	}
 	private static WebDriver chooseFirefox() {
 		System.out.println("Browser is FIREFOX");
-		System.setProperty("webdriver.gecko.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\geckodriver.exe");
+		System.setProperty(GlobalConfig.FIREFOXPROPERTY[0], GlobalConfig.DRIVERDIRECTORY + GlobalConfig.FIREFOXPROPERTY[1]);
 		return new FirefoxDriver();
 	}
 	private static WebDriver chooseIE() {
 		System.out.println("Browser is IE");
-		System.setProperty("webdriver.ie.driver", "C:\\HexawareTraining\\Cohort2\\Selenium-BDD\\Software\\IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", GlobalConfig.DRIVERDIRECTORY + "IEDriverServer.exe");
 		WebDriver driver = new InternetExplorerDriver();
 		driver.manage().window().maximize();
 		return driver;
