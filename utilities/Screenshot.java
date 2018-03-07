@@ -14,7 +14,8 @@ public class Screenshot {
 	// This function will take a screenshot of the browser
 	public static void take(WebDriver driver, String filename) {
 		File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		File destinationFile = new File(GlobalConfig.TESTOUPUT_DIR + "Screenshots\\" + filename + ".jpg");
+		String filepath = GlobalConfig.TESTOUPUT_DIR + "Screenshots\\" + filename + ".jpg";
+		File destinationFile = new File(filepath);
 		
 		try {
 			FileUtils.copyFile(screenshotFile, destinationFile);
@@ -24,14 +25,20 @@ public class Screenshot {
 		}
 	}
 	
+	// Receives driver, test case name, and filename
+	// Calls the primary .take() function and passes the testCase/filename as filename
 	public static void takeByTestCase(WebDriver driver, String testCase, String filename) {
 		Screenshot.take(driver, testCase + "\\" + filename);
 	}
 	
+	// Receives driver, test outcome, and filename
+	// Calls the primary .take() function and passes the testOutcome/filename as filename
 	public static void takeByOutcome(WebDriver driver, String testOutcome, String filename) {
 		Screenshot.take(driver, testOutcome + "\\" + filename);
 	}
 	
+	// Receives driver, test case name, test outcome, and filename
+	// Calls the primary .take() function and passes the testCase/testOucome/filename as filename
 	public static void takeByTestByOutCome(WebDriver driver, String testCase, String testOutcome, String filename) {
 		Screenshot.take(driver, testCase + "\\" + testOutcome + "\\" + filename);
 	}

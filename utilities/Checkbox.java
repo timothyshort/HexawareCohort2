@@ -18,4 +18,15 @@ public class Checkbox {
 			}
 		}
 	}
+	
+	// Takes driver, String, By
+	// Tests value of String and then calls the primary above with boolean
+	public static void choose(WebDriver driver, String checkBoxDesired, By checkboxElement) {
+		if (checkBoxDesired.equalsIgnoreCase("TRUE")) {
+			Checkbox.choose(driver, true, checkboxElement);
+		}
+		else {
+			Checkbox.choose(driver, false, checkboxElement);
+		}
+	}
 }
