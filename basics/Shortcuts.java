@@ -58,6 +58,12 @@ public class Shortcuts {
 	 Implicitly Wait - default time that a WebDriver instance will wait for an element to appear before throwing an exception
 	 Explicitly Wait - defined specifically for a specific element with defined conditions
 	 
+	Standard Naming Conventions
+	 Class Names: Capitalize first letter of each word (LoginTestDemo)
+	 Functions: lowercase first letter of first word, uppercase letter for subsequent words (printPageTitle)
+	 Variables: same as functions (firstName)
+	 Objects: similar to variables OR precede with o followed object/class name
+	 
 	*/
 	
 }

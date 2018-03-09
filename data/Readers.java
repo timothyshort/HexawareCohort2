@@ -3,6 +3,7 @@ package data;
 import java.util.List;
 
 import utilities.CSV;
+import utilities.Database;
 import utilities.Excel;
 import utilities.GlobalConfig;
 
@@ -10,7 +11,20 @@ public class Readers {
 	// Download source files
 	// http://sdettraining.com/projects/freddiemac/testdata/
 	public static void main(String[] args) {
-		readExcel();
+		readDB();
+	}
+	
+	private static void readDB() {
+		String query = "SELECT * FROM MortgageLoanTestData";
+		int fields = 5;
+		String[][] dbData = Database.get(query, fields);
+		for (String[] record : dbData) {			
+			System.out.print("[ ");
+			for (String field : record) {
+				System.out.print(field + "  ");
+			}
+			System.out.println("]");
+		}
 	}
 	
 	private static void readExcel() {
