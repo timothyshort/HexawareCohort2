@@ -1,10 +1,15 @@
 package cucumber.steps;
 
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,14 +20,19 @@ import utilities.GlobalConfig;
 public class CucumberLogin {
 	WebDriver driver;
 	
-	@When("^the user enters a valid username$")
-	public void the_user_enters_a_valid_username() throws Throwable {
-		driver.findElement(By.name("ctl00$MainContent$txtUserName")).sendKeys("tim@testemail.com");
+	@After
+	public void tearDown() {
+		driver.quit();
+	}
+	
+	@When("^the user enters a \"(.*)\" as the username$")
+	public void the_user_enters_a_valid_username(String username) throws Throwable {
+		driver.findElement(By.name("ctl00$MainContent$txtUserName")).sendKeys(username);
 	}
 
-	@When("^the user enters a bad password$")
-	public void the_user_enters_a_bad_password() throws Throwable {
-		driver.findElement(By.name("ctl00$MainContent$txtPassword")).sendKeys("badpassword2123");
+	@When("^the user enters a \"(.*)\" as a bad password$")
+	public void the_user_enters_a_bad_password(String password) throws Throwable {
+		driver.findElement(By.name("ctl00$MainContent$txtPassword")).sendKeys(password);
 	}
 
 	@When("^the user clicks login$")
@@ -66,6 +76,44 @@ public class CucumberLogin {
 	@And("homepage should be SDET Training")
 	public void homepageShouldBeSDETTraining() {
 		System.out.println("Page Title: " + driver.getTitle());
+	}
+	
+	@When("^the user enters username and password$")
+	public void userEntersUsernameAndPassword(DataTable data) {
+		System.out.println("User enters username and password");
+		// Extract datatable into list
+		List<List<String>> credentials = data.raw();
+		
+		// Parse list into local variables
+		String username = credentials.get(0).get(0);
+		String password = credentials.get(0).get(1);
+		
+		// Perform action on the UI
+		driver.findElement(By.name("ctl00$MainContent$txtUserName")).sendKeys(username);
+		driver.findElement(By.name("ctl00$MainContent$txtPassword")).sendKeys(password);
+		driver.findElement(By.name("ctl00$MainContent$btnLogin")).click();
+	}
+	
+	@When("^the user enters username and password credentials$")
+	public void userEntersUsernamePasswordCredentials(DataTable data) {
+		// Extract datatable into map and iterate through map
+		for (Map<String, String> credentials : data.asMaps(String.class, String.class)) {
+			// Parse list into local variables
+			String username = credentials.get("USERNAME");
+			String password = credentials.get("PASSWORD");
+			
+			// Clear the textboxes
+			driver.findElement(By.name("ctl00$MainContent$txtUserName")).clear();
+			driver.findElement(By.name("ctl00$MainContent$txtPassword")).clear();
+			
+			// Perform action on the UI
+			driver.findElement(By.name("ctl00$MainContent$txtUserName")).sendKeys(username);
+			driver.findElement(By.name("ctl00$MainContent$txtPassword")).sendKeys(password);
+			driver.findElement(By.name("ctl00$MainContent$btnLogin")).click();
+		}
+		
+		
+		
 	}
 	
 }
