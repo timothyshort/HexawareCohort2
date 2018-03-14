@@ -10,19 +10,27 @@ import org.openqa.selenium.WebDriver;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import utilities.DriverFactory;
+import utilities.Excel;
 import utilities.GlobalConfig;
 
 public class CucumberLogin {
 	WebDriver driver;
+	String[][] data = null;
 	
 	@After
 	public void tearDown() {
 		driver.quit();
+	}
+	
+	@Before
+	public void setup() {
+		data = Excel.get(GlobalConfig.TESTDATA_DIR + "NewAccount.xlsx");
 	}
 	
 	@When("^the user enters a \"(.*)\" as the username$")
@@ -111,9 +119,16 @@ public class CucumberLogin {
 			driver.findElement(By.name("ctl00$MainContent$txtPassword")).sendKeys(password);
 			driver.findElement(By.name("ctl00$MainContent$btnLogin")).click();
 		}
+	}
 		
-		
-		
+	@When("^user enters username as (.*)$")
+	public void userEntersUsername(String username) {
+		driver.findElement(By.name("ctl00$MainContent$txtUserName")).sendKeys(username);
+	}
+	
+	@And("^user enters password as (.*)$")
+	public void userEntersPassword(String password) {
+		driver.findElement(By.name("ctl00$MainContent$txtPassword")).sendKeys(password);
 	}
 	
 }
