@@ -8,7 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features="features",
-		glue = "cucumber.steps"
+		glue = "cucumber.steps",
+		tags = "@AccountManagementTests",
+		dryRun = false
 		)
 public class TestRunner {
 
