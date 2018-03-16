@@ -20,19 +20,9 @@ import utilities.Excel;
 import utilities.GlobalConfig;
 
 public class CucumberLogin {
-	WebDriver driver;
+	WebDriver driver = Hooks.driver;
 	String[][] data = null;
-	
-	@After
-	public void tearDown() {
-		driver.quit();
-	}
-	
-	@Before
-	public void setup() {
-		data = Excel.get(GlobalConfig.TESTDATA_DIR + "NewAccount.xlsx");
-	}
-	
+		
 	@When("^the user enters a \"(.*)\" as the username$")
 	public void the_user_enters_a_valid_username(String username) throws Throwable {
 		driver.findElement(By.name("ctl00$MainContent$txtUserName")).sendKeys(username);
@@ -62,7 +52,8 @@ public class CucumberLogin {
 	@Given("the user is on the login page")
 	public void userOnLoginPage() {
 		System.out.println("User is on the login page");
-		driver = DriverFactory.start("chrome", GlobalConfig.AMS_URL);
+		driver.get(GlobalConfig.AMS_URL);
+		// driver = DriverFactory.start("chrome", GlobalConfig.AMS_URL);
 	}
 	
 	// When the user enters credentials
