@@ -20,7 +20,18 @@ import utilities.Excel;
 import utilities.GlobalConfig;
 
 public class CucumberLogin {
-	WebDriver driver = Hooks.driver;
+	WebDriver driver;
+	
+	@Before("@Login")
+	public void setup() {
+		driver = DriverFactory.start("chrome");
+	}
+	
+	@After("@Login")
+	public void tearDown() {
+		driver.quit();
+	}
+	
 	String[][] data = null;
 		
 	@When("^the user enters a \"(.*)\" as the username$")

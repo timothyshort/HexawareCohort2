@@ -9,9 +9,15 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features="features",
 		glue = "cucumber.steps",
-		tags = "@AccountManagementTests",
-		dryRun = false
+		tags = { "@SmokeTests" },
+		format = { "html:reports", "json:reports/cucumberResults.json" }
 		)
 public class TestRunner {
 
 }
+
+// True: "@SmokeTests"
+// NOT: "~@SmokeTests"
+// AND: { "@Login" , "~@Ignore" }
+// OR: { "@SmokeTests, @CurrentTest" }
+// COMPLEX: { "@AccountManagement", "@SmokeTests, @RegressionTest, @CurrentTest }
