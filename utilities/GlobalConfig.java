@@ -15,6 +15,7 @@ public class GlobalConfig {
 	// Web application URLs
 	public static final String ROOTURL = "http://sdettraining.com/projects/";
 	public static final String AMS_URL = "http://sdettraining.com/trguitransactions/AccountManagement.aspx";
+	public static final String SHOPCART_URL = "http://sdettraining.com/online/";
 	
 	// Database Connection String
 	public static final String DB_SERVER = "jdbc:sqlserver://sql2k801.discountasp.net";
